@@ -1,0 +1,68 @@
+ gcc -g p7final.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x722: file p7final.c, line 12.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7final.c:12
+12  int main(){
+(gdb) n
+14    t = input_triangle();
+(gdb) s
+input_triangle () at p7final.c:20
+20  Triangle input_triangle(){
+(gdb) n
+22    printf("Enter the base and height of triangle: ");
+(gdb) n
+23    scanf("%f%f", &a.base, &a.height);
+(gdb) n
+Enter the base and height of triangle: 3 4
+24    return a;
+(gdb) n
+25  }
+(gdb) n
+main () at p7final.c:15
+15    find_area(&t);
+(gdb) p t.base
+$1 = 3
+(gdb) p t.height
+$2 = 4
+(gdb) p t.area
+$3 = 188825.5
+(gdb) s
+find_area (t=0x7fffd07467ac) at p7final.c:27
+27    t->area = 0.5 * t->base * t->height;
+(gdb) n
+28  }
+(gdb) n
+main () at p7final.c:16
+16    output(t);
+(gdb) p t.area
+$4 = 6
+(gdb) s
+output (t=...) at p7final.c:30
+30    printf("The area of triangle with base = %f and height = %f is %f\n", t.base, t.height, t.area);
+(gdb) n
+The area of triangle with base = 3.000000 and height = 4.000000 is 6.000000
+31  }(gdb) c
+Continuing.
+[Inferior 1 (process 525) exited normally]
+(gdb) q
+ 

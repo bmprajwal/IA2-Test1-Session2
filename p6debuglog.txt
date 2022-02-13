@@ -1,0 +1,117 @@
+ gcc -g p6final.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x722: file p6final.c, line 7.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p6final.c:7
+7   int main(){
+(gdb) n
+9     input_string(a);
+(gdb) s
+input_string (a=0x7ffe613cc5f0 "p\b") at p6final.c:16
+16    printf("Enter string: ");
+(gdb) n
+17    scanf("%s", a);  
+(gdb) n
+Enter string: 
+reva
+18  }
+(gdb) n
+main () at p6final.c:10
+10    str_reverse(a);
+(gdb) s
+str_reverse (a=0x7ffe613cc5f0 "reva") at p6final.c:21
+21    int count = 0, end;
+(gdb) n
+22    while(a[count]!='\0')
+(gdb) n
+23      count++;
+(gdb) 
+22    while(a[count]!='\0')
+(gdb) n
+23      count++;
+(gdb) n
+22    while(a[count]!='\0')
+(gdb) n
+23      count++;
+(gdb) n
+22    while(a[count]!='\0')
+(gdb) n
+23      count++;
+(gdb) n
+22    while(a[count]!='\0')
+(gdb) 
+24    end = count-1;
+(gdb) p count
+$1 = 4
+(gdb) n
+25    for(int begin=0;begin<end;begin++,end--){
+(gdb) p end
+$2 = 3
+(gdb) n
+26      t=a[begin];
+(gdb) n
+27      a[begin]=a[end];
+(gdb) p t
+$3 = 114 'r'
+(gdb) n
+28      a[end]=t;
+(gdb) p a[begin]
+$4 = 97 'a'
+(gdb) 
+$5 = 97 'a'
+(gdb) n
+25    for(int begin=0;begin<end;begin++,end--){
+(gdb) n
+26      t=a[begin];
+(gdb) n
+27      a[begin]=a[end];
+(gdb) p begin
+$6 = 1
+(gdb) p end
+$7 = 2
+(gdb) p t
+$8 = 101 'e'
+(gdb) p a[begin]
+$9 = 101 'e'
+(gdb) p a[end]
+$10 = 118 'v'
+(gdb) n
+28      a[end]=t;
+(gdb) n
+25    for(int begin=0;begin<end;begin++,end--){
+(gdb) p a[end]
+$11 = 101 'e'
+(gdb) n
+30  }
+(gdb) n
+main () at p6final.c:11
+11    output(a);
+(gdb) s
+output (a=0x7ffe613cc5f0 "aver") at p6final.c:32
+32    printf("Reverse: %s\n", a);
+(gdb) n
+Reverse: aver
+33  }(gdb) c
+Continuing.
+[Inferior 1 (process 425) exited normally]
+(gdb) q
+ 
